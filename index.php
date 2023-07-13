@@ -16,15 +16,15 @@ function get_query_params(array $params_array): string
 $get_link = fn() => "<a href='{${get_query_params($_GET)}}'>Click</a>";
 
 if (isset($_POST['submit'])) {
-    echo $_POST['name'];
-    echo $_POST['age'];
+    echo filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    echo filter_input(INPUT_POST, 'age', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 }
 
 echo $get_link();
 
 ?>
 
-<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
     <div>
         <label for="name">Name: </label>
         <input type="text" name="name">
