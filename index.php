@@ -1,23 +1,30 @@
 <?php
-$numbers = [1, 2, 3];
-$fruits = array('apple', 'banana', 'kiwi');
 
-// Associative array
-$person = [
-    'first_name' => 'John',
-    'last_name' => 'Doe',
-    'age' => 24,
-    'hobby' => 'sport'
-];
+$time1 = date('F s');
+echo $time1;
 
-//echo "<h1 style='color: red'>$person[first_name] $person[last_name]</h1> is $person[age] years old and his hobby is $person[hobby]."
+if ($time1) {
+    echo "Time is {$time1}";
+} elseif ($time1 === 12) {
+    echo 'Time is 12';
+} else {
+    echo 'Time is not detected';
+}
 
-// Multidimensional arrays
-$people = [
-    ['name' => 'Jane', 'age' => 34]
-];
+$color = 'blue';
 
-echo $people[0]['name'];
-var_dump(json_encode($people));
+switch ($color) {
+    case 'blue':
+        echo 'Blue selected';
+        break;
+    case  'red':
+        echo 'Red selected';
+        break;
+    case  'green':
+        echo 'Green selected';
+        break;
+    default:
+        echo 'Red, Green, Blue is not selected';
+}
 
 ?>
