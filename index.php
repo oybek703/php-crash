@@ -1,10 +1,13 @@
 <?php
-$posts = ['First Post', 'Second Post', 'Third Post'];
-
-//for ($x = 0; $x < count($posts); $x++) {
-//    echo "$x - $posts[$x] </br>";
-//}
-
-foreach ($posts as $key => $value) {
-    echo "$key. $value </br>";
+function sum($n1, $n2) {
+    return $n1+ $n2;
 }
+
+$sum1 = sum(1,2);
+echo $sum1 . '</br>';
+
+$y=1;
+
+$f2 = fn ($n1, $n2) => $n1 + $n2 ;
+
+echo $f2(20, 87);
