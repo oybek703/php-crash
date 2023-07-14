@@ -1,18 +1,44 @@
 <?php
-function inverse(string $x): float|int
+
+class User
 {
-    if (!$x) {
-        throw new Exception('Division to zero!');
+
+    public $name;
+
+    public function __construct($name)
+    {
+        $this->name = $name;
     }
-    return 1 / $x;
+
+    function set_name($name)
+    {
+        $this->name = $name;
+    }
+
+    function get_name()
+    {
+        return $this->name;
+    }
+
 }
 
-try {
-    echo inverse(5);
-    echo  '</br>';
-    echo inverse(0);
-} catch (Exception $e) {}
-    echo 'Something went wrong!';
-    echo  '</br>';
-    echo $e->getMessage();
-?>
+class Employee extends User
+{
+    public $title;
+
+    public function __construct($name, $title)
+    {
+        parent::__construct($name);
+        $this->title = $title;
+    }
+
+
+    function get_title()
+    {
+        return $this->title;
+    }
+}
+
+$user1 = new User('Brad');
+$emp1 = new Employee('John', 'Manager');
+echo $emp1->title;
