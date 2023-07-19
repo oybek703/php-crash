@@ -1,17 +1,21 @@
 <?php
 
-class Pages
+class Pages extends Controller
 {
     public function __construct()
     {
     }
 
-    public function index() {
+    public function index(): void
+    {
+        $data = ['title' => 'Simple MVC Framework'];
+        $this->view('pages/index', $data);
     }
 
-    public function about($id) {
-        echo $id;
-        echo 'This is about';
+    public function about(): void
+    {
+        $data = ['title' => 'About Us'];
+        $this->view('pages/about', $data);
     }
 
 }

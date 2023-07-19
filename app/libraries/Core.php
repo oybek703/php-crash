@@ -7,9 +7,9 @@
 
 class Core
 {
-    protected $currentController = 'Pages';
-    protected $currentMethod = 'index';
-    protected $params = [];
+    protected object | string $currentController = 'Pages';
+    protected string $currentMethod = 'index';
+    protected array $params = [];
 
     public function __construct()
     {
