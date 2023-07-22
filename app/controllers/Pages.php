@@ -8,13 +8,24 @@ class Pages extends Controller
 
     public function index(): void
     {
-        $data = ['title' => 'Simple MVC Framework'];
+        if (isUserLoggedIn()) {
+            redirect('/posts');
+        }
+
+        $data = [
+            'title' => 'Share Posts',
+            'description' => 'Simple Social network built on PHP MVC framework.'
+        ];
         $this->view('pages/index', $data);
     }
 
     public function about(): void
     {
-        $data = ['title' => 'About Us'];
+        $data = [
+            'title' => 'About Us',
+            'description' => 'App to share posts with other users.'
+        ];
+
         $this->view('pages/about', $data);
     }
 

@@ -1,5 +1,10 @@
 <?php require APP_ROOT . '/views/inc/header.php'; ?>
-    <h1><?php /** @var object $data */
-        echo $data['title'] ?></h1>
-    <p>This is Simple MVC framework built in PHP with OOP.</p>
+    <div class="jumbotron text-center jumbotron-fluid">
+        <h1 class="display-3"><?php /** @var object $data */
+            echo $data['title'] ?></h1>
+        <p class="lead">
+            <?php echo $data['description'];?>
+        </p>
+    </div>
+
 <?php require APP_ROOT . '/views/inc/footer.php'; ?>

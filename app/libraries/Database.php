@@ -72,14 +72,14 @@ class Database
     // Get result set as an array of objects
     public function resultSet(): false|array
     {
-        $this->statement->execute();
+        $this->execute();
         return $this->statement->fetchAll(PDO::FETCH_OBJ);
     }
 
     // Get set as an object
-    public function singleSet(): false|array
+    public function singleSet(): mixed
     {
-        $this->statement->execute();
+        $this->execute();
         return $this->statement->fetch(PDO::FETCH_OBJ);
     }
 
@@ -87,6 +87,7 @@ class Database
     // Get row count
     public function rowCount(): int
     {
+        $this->execute();
         return $this->statement->rowCount();
     }
 }
