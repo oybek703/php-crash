@@ -3,3 +3,6 @@
 
 # Media files
 uploads/*
+
+# Dependencies
+src/vendor
