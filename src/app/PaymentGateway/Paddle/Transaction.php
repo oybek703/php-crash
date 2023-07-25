@@ -2,25 +2,21 @@
 
 namespace App\PaymentGateway\Paddle;
 
-use App\Enums\Status;
-use http\Exception\InvalidArgumentException;
-
 class Transaction
 {
-    public string $status;
+    private static float $count = 0;
 
-    public function __construct()
+    public function __construct(public float $amount, public string $description)
     {
-        $this->setStatus(Status::PENDING);
+        self::$count++;
     }
 
-    public function setStatus($status): self
+    /**
+     * @return float
+     */
+    public static function getCount(): float
     {
-        if (!isset(Status::ALL_STATUSES[$status])) {
-            throw new \InvalidArgumentException('Invalid Status!');
-        }
-        $this->status = $status;
-        return $this;
+        return self::$count;
     }
 
 }

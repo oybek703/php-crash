@@ -1,11 +1,11 @@
 <?php
+declare(strict_types=1);
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use App\Enums\Status;
 use App\PaymentGateway\Paddle\Transaction;
 
-$paddleTransaction = new Transaction();
+$transaction = new Transaction(100, 'Test desc');
 
-$paddleTransaction->setStatus(Status::PAID);
-echo $paddleTransaction->status;
+echo $transaction::getCount();
+
