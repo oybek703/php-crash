@@ -9,6 +9,6 @@ use App\PaymentGateway\Paddle\Transaction;
 $transaction = new Transaction(100, 'Test desc');
 $db = DB::getInstance([]);
 
-var_dump($db);
-echo $transaction::getCount();
+$transaction->getCount();
+$transaction->process();
 

@@ -19,4 +19,12 @@ class Transaction
         return self::$count;
     }
 
+    public function process(): void {
+        array_map(static function () {
+            var_dump($this->amount);
+        }, [1]);
+
+        echo "Processing paddle transaction...";
+    }
+
 }
