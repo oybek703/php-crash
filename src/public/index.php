@@ -11,7 +11,7 @@ $reflectionProperty = new ReflectionProperty(Transaction::class, 'amount');
 
 $reflectionProperty->setAccessible(true);
 
-var_dump($reflectionProperty->getValue($transaction));
+$transaction->copyFrom(new Transaction(120, 'Desc 2'));
 
 $transaction->process();
 

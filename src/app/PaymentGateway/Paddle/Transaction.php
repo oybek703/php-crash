@@ -11,6 +11,11 @@ class Transaction
         self::$count++;
     }
 
+    public function copyFrom(Transaction $transaction): void
+    {
+        var_dump($transaction->amount, $transaction::$count);
+    }
+
     /**
      * @return float
      */
