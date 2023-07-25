@@ -6,7 +6,7 @@ class Transaction
 {
     private static float $count = 0;
 
-    public function __construct(public float $amount, public string $description)
+    public function __construct(private float $amount, public string $description)
     {
         self::$count++;
     }
@@ -20,10 +20,6 @@ class Transaction
     }
 
     public function process(): void {
-        array_map(static function () {
-            var_dump($this->amount);
-        }, [1]);
-
         echo "Processing paddle transaction...";
     }
 
