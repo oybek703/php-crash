@@ -6,20 +6,33 @@ namespace App;
 
 class Invoice
 {
-    private static $id;
-
-    public function __construct()
-    {
-        $this->id = uniqid('invoice_');
+    public function __construct(
+        public int $id,
+        public string $desc,
+        public string $cardNumber
+    ) {
     }
 
-    public function __clone(): void
+
+    public function __sleep(): array
     {
-        $this->id = uniqid('invoice_');
+        return ['id', 'desc'];
     }
 
-    public static function create(): static
+
+    public function __serialize(): array
     {
-        return new static();
+     return [
+         'id' => $this->id,
+         'desc' => $this->desc,
+         'cardNumber' => base64_encode($this->cardNumber),
+     ];
     }
+
+    public function __unserialize(array $data): void
+    {
+
+        var_dump($data);
+    }
+
 }
