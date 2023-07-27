@@ -7,8 +7,15 @@ namespace App;
 class Customer
 {
     public function __construct(
-        public string $name
+        public ?array $info
     ) {
+    }
+
+    public function getBillingInfo(): ?array
+    {
+        if (empty($this->info)) return null;
+
+        return $this->info;
     }
 
 }
