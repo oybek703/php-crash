@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\PaymentGateway\Paddle;
 
 class Transaction
@@ -24,7 +26,8 @@ class Transaction
         return self::$count;
     }
 
-    public function process(): void {
+    public function process(): void
+    {
         echo "Processing paddle transaction...";
     }
 

@@ -1,17 +1,19 @@
 <?php
+
 declare(strict_types=1);
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use App\PaymentGateway\Paddle\Transaction;
+use App\Fields\Boolean\Checkbox;
+use App\Fields\Boolean\Radio;
+use App\Fields\Text;
 
-$transaction = new Transaction(100, 'Test desc');
+$fields = [
+    new Text('name'),
+    new Checkbox('verified'),
+    new Radio('gender')
+];
 
-$reflectionProperty = new ReflectionProperty(Transaction::class, 'amount');
-
-$reflectionProperty->setAccessible(true);
-
-$transaction->copyFrom(new Transaction(120, 'Desc 2'));
-
-$transaction->process();
-
+foreach ($fields as $field):
+    echo $field->render() . '</br>';
+endforeach;
