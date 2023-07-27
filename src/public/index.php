@@ -9,4 +9,4 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 $invoice = new Invoice();
 
-$invoice->process(10, 'Test desc');
+echo $invoice();

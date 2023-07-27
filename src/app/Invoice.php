@@ -8,17 +8,14 @@ class
 Invoice
 {
 
-    protected function process(float $amount, string $description): void
+    public function __toString(): string
     {
-        echo $amount . $description;
+        echo ($this instanceof \Stringable);
+        return '1';
     }
 
-    public function __call(string $name, array $arguments)
+    public function __invoke()
     {
-        if (method_exists($this, $name)) {
-            call_user_func_array([$this, $name], $arguments);
-//            $this->$name(...$arguments);
-        }
+        echo "Invoked";
     }
-
 }
