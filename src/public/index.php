@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$obj = new class {
-    public function __construct()
-    {
-    }
-};
+$inv1 = new \App\Invoice(1, 'Desc 1');
+$inv2 = new \App\Invoice(true, 'Desc 1');
 
-var_dump(get_class($obj));
+var_dump($inv1 == $inv2);
+var_dump($inv1 === $inv2);
