@@ -2,18 +2,13 @@
 
 declare(strict_types=1);
 
+
+use App\Invoice;
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use App\Fields\Boolean\Checkbox;
-use App\Fields\Boolean\Radio;
-use App\Fields\Text;
+$invoice = new Invoice();
+$invoice->amount = 10;
 
-$fields = [
-    new Text('name'),
-    new Checkbox('verified'),
-    new Radio('gender')
-];
-
-foreach ($fields as $field):
-    echo $field->render() . '</br>';
-endforeach;
+echo $invoice->amount;
+var_dump($invoice);
