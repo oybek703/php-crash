@@ -7,32 +7,18 @@ namespace App;
 class Invoice
 {
     public function __construct(
-        public int $id,
-        public string $desc,
-        public string $cardNumber
+        public Customer $customer
     ) {
     }
 
-
-    public function __sleep(): array
+    public function process (float $amount): void
     {
-        return ['id', 'desc'];
-    }
-
-
-    public function __serialize(): array
-    {
-     return [
-         'id' => $this->id,
-         'desc' => $this->desc,
-         'cardNumber' => base64_encode($this->cardNumber),
-     ];
-    }
-
-    public function __unserialize(array $data): void
-    {
-
-        var_dump($data);
+        if ($amount <=0) {
+            throw new \Exception('Invalid amount!');
+        }
+        echo 'Processing $'  . $amount . ' invoice - '  . PHP_EOL;
+        sleep(1);
+        echo "<strong style='font-family: sans-serif'>OK</strong>" . PHP_EOL;
     }
 
 }
