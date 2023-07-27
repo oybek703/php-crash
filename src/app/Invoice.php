@@ -1,21 +1,24 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
 class
 Invoice
 {
-    public function __get(string $name)
+
+    protected function process(float $amount, string $description): void
     {
-        var_dump($name);
+        echo $amount . $description;
     }
 
-    public function __set(string $name, $value): void
+    public function __call(string $name, array $arguments)
     {
-        if ($name === 'amount') {
-            throw new \Exception('This is not allowed!');
+        if (method_exists($this, $name)) {
+            call_user_func_array([$this, $name], $arguments);
+//            $this->$name(...$arguments);
         }
-        $this->$name = $value;
     }
 
 }

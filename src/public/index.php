@@ -8,7 +8,5 @@ use App\Invoice;
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $invoice = new Invoice();
-$invoice->amount = 10;
 
-echo $invoice->amount;
-var_dump($invoice);
+$invoice->process(10, 'Test desc');
