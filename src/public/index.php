@@ -29,3 +29,11 @@ echo "</br>";
 $allInOneCoffeeMaker->makeCappuccino();
 echo "</br>";
 $allInOneCoffeeMaker->makeLatte();
+echo "</br>";
+
+LatteMaker::$foo = 'l_foo';
+AllInOneCoffeeMaker::$foo = 'a_i_o_foo';
+
+echo LatteMaker::$foo;
+echo "</br>";
+echo AllInOneCoffeeMaker::$foo;
