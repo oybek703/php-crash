@@ -3,10 +3,9 @@
 declare(strict_types=1);
 
 
-use App\Invoice;
-
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$invoice = new Invoice();
+$classA = new \App\A();
+$classB = new \App\B();
 
-var_dump($invoice);
+var_dump($classB::make());
