@@ -13,13 +13,19 @@ $cappuccinoMaker = new CappuccinoMaker();
 $allInOneCoffeeMaker = new AllInOneCoffeeMaker();
 
 $coffeeMaker->makeCoffee();
-
+echo "</br>";
 $latteMaker->makeCoffee();
+echo "</br>";
 $latteMaker->makeLatte();
+echo "</br>";
 
 $cappuccinoMaker->makeCoffee();
+echo "</br>";
 $cappuccinoMaker->makeCappuccino();
+echo "</br>";
 
 $allInOneCoffeeMaker->makeCoffee();
+echo "</br>";
 $allInOneCoffeeMaker->makeCappuccino();
+echo "</br>";
 $allInOneCoffeeMaker->makeLatte();
