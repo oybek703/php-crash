@@ -2,14 +2,16 @@
 
 declare(strict_types=1);
 
-use App\{Invoice, Customer};
-
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$inv1 = new Invoice(new Customer(['foo' => 'bar']));
 
-set_exception_handler(function (Exception $e) {
-    var_dump($e->getMessage());
-});
+$dateTime = new DateTime(
+    '12.04.2021 14:34'
+);
 
-array_rand([], 1);
+var_dump($dateTime);
+
+$dateTime = new DateTime('12.04.2021', new DateTimeZone('Asia/Tashkent'));
+echo "</br>";
+echo "</br>";
+var_dump($dateTime);
