@@ -1,3 +1,7 @@
 <?php
 
-echo phpinfo();
+$person = 'name';
+
+$$person = 'John Doe';
+
+echo "{$name}";
