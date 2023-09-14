@@ -1,8 +1,11 @@
 <?php
 
-$arr1 = ['name' => 'John', 'age' => 24];
+$str = 'Hi there';
 
-echo "<pre>";
-var_dump(array_key_exists('age', $arr1));
-var_dump(isset($arr1['hobby']));
-echo "</pre>";
+$x= strpos($str, 'H');
+echo $x;
+
+$z = false;
+echo $z ?? 'World';
+
+echo $x === false ? 'H not found' : 'H found';
