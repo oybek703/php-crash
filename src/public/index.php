@@ -1,7 +1,8 @@
 <?php
 
-$person = 'name';
+$arr1 = ['name' => 'John', 'age' => 24];
 
-$$person = 'John Doe';
-
-echo "{$name}";
+echo "<pre>";
+var_dump(array_key_exists('age', $arr1));
+var_dump(isset($arr1['hobby']));
+echo "</pre>";
