@@ -9,3 +9,6 @@ restart:
 
 rebuild:
 	cd docker && docker-compose up --build
+
+stop:
+	cd docker && docker-compose stop
