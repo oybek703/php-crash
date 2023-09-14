@@ -1,11 +1,11 @@
 <?php
+$i=0;
 
-$str = 'Hi there';
-
-$x= strpos($str, 'H');
-echo $x;
-
-$z = false;
-echo $z ?? 'World';
-
-echo $x === false ? 'H not found' : 'H found';
+while ($i < 10):
+    if ($i === 3):
+        $i++;
+        continue;
+    endif;
+    echo "<h4>i: {$i}</h4>";
+    $i++;
+endwhile;
