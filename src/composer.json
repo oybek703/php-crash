@@ -1,0 +1,17 @@
+{
+    "name": "php/crash",
+    "description": "Test",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Tester"
+        }
+    ],
+    "require": {
+        "ramsey/uuid": "^4.7"
+    }
+}
