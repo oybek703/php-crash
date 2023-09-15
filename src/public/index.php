@@ -1,11 +1,19 @@
 <?php
+declare(strict_types=1);
+ini_set('display_errors', (string)E_ALL);
 
-$nums = [1, 2, 3];
+require_once '../app/Stripe/Transaction.php';
+require_once '../app/Paddle/Transaction.php';
+require_once '../app/CustomerProfile.php';
 
-$obj = (object)$nums;
+use App\Stripe\Transaction;
+use App\Paddle\Transaction as PaddleTransaction;
 
-$obj1 = (object) 'hi there';
 
-var_dump($obj1->scalar);
+$tr1 = new Transaction();
+$tr2 = new PaddleTransaction();
 
-var_dump($obj->{2});
+var_dump($tr1);
+echo "<br>";
+var_dump($tr2);
+
