@@ -2,9 +2,12 @@
 declare(strict_types=1);
 ini_set('display_errors', (string)E_ALL);
 
-require_once '../app/Stripe/Transaction.php';
-require_once '../app/Paddle/Transaction.php';
-require_once '../app/CustomerProfile.php';
+spl_autoload_register(function ($class) {
+    $dirname = dirname(__FILE__);
+    $path = lcfirst(str_replace('\\', '/', $class));
+    $full_path = "$dirname/../$path.php";
+    require_once $full_path;
+});
 
 use App\Stripe\Transaction;
 use App\Paddle\Transaction as PaddleTransaction;
