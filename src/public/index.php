@@ -1,9 +1,18 @@
 <?php
-ini_set('display_errors', 1);
+ini_set('display_errors', '1');
 
-echo ini_get('max_execution_time');
-set_time_limit(2);
+$texts =['hello', 'world'];
+$stream = fopen('foo.txt', 'r+');
 
-sleep(3);
 
-echo "<br> Hi there";
+foreach ($texts as $index=> $text):
+    if ($index === 0):
+        file_put_contents('foo.txt', $text);
+    else:
+        file_put_contents('foo.txt', "\n{$text}", FILE_APPEND);
+    endif;
+endforeach;
+
+
+fclose($stream);
+
