@@ -11,4 +11,4 @@ rebuild:
 	cd docker && docker-compose up --build
 
 stop:
-	cd docker && docker-compose stop
+	cd docker && docker-compose 		stop
