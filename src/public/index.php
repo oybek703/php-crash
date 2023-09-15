@@ -1,18 +1,11 @@
 <?php
-ini_set('display_errors', '1');
 
-$texts =['hello', 'world'];
-$stream = fopen('foo.txt', 'r+');
+$nums = [1, 2, 3];
 
+$obj = (object)$nums;
 
-foreach ($texts as $index=> $text):
-    if ($index === 0):
-        file_put_contents('foo.txt', $text);
-    else:
-        file_put_contents('foo.txt', "\n{$text}", FILE_APPEND);
-    endif;
-endforeach;
+$obj1 = (object) 'hi there';
 
+var_dump($obj1->scalar);
 
-fclose($stream);
-
+var_dump($obj->{2});
