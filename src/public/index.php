@@ -1,16 +1,18 @@
 <?php
 declare(strict_types=1);
-
-use App\Stripe\Transaction;
-use Ramsey\Uuid\Uuid;
-
-ini_set('display_errors', (string)E_ALL);
-
+ini_set('display_errors', '1');
 require '../vendor/autoload.php';
 
-$uid1 = Uuid::uuid4();
-$tr1 = new Transaction();
+use App\Stripe\Transaction;
 
+$transaction = new Transaction(25);
 
-echo $uid1;
-var_dump($tr1);
+$reflectionProperty = new ReflectionProperty(Transaction::class, 'amount');
+
+$reflectionProperty->setAccessible(true);
+
+$reflectionProperty->setValue($transaction, 125);
+
+var_dump($reflectionProperty->getValue($transaction));
+
+$transaction->process();
