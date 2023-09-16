@@ -3,9 +3,14 @@ declare(strict_types=1);
 ini_set('display_errors', '1');
 require '../vendor/autoload.php';
 
-use App\Stripe\Transaction;
+use App\{Field, Boolean, Text, Radio, Checkbox};
 
-$transaction = new Transaction(25);
+$fields = [
+    new Text('booleanField'),
+    new Radio('booleanField'),
+    new Checkbox('booleanField')
+];
 
-$transaction->copyFrom(new Transaction(100));
-$transaction->process();
+foreach ($fields as $field):
+    echo $field->render() . '<br>';
+endforeach;
