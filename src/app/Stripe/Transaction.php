@@ -12,6 +12,11 @@ Transaction
     {
     }
 
+    public function copyFrom(Transaction $transaction)
+    {
+        var_dump($transaction->amount);
+
+    }
 
     public function process() {
         echo "Processing {$this->amount}$ transaction.";

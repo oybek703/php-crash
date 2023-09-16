@@ -7,12 +7,5 @@ use App\Stripe\Transaction;
 
 $transaction = new Transaction(25);
 
-$reflectionProperty = new ReflectionProperty(Transaction::class, 'amount');
-
-$reflectionProperty->setAccessible(true);
-
-$reflectionProperty->setValue($transaction, 125);
-
-var_dump($reflectionProperty->getValue($transaction));
-
+$transaction->copyFrom(new Transaction(100));
 $transaction->process();
