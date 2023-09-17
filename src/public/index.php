@@ -3,7 +3,7 @@ declare(strict_types=1);
 ini_set('display_errors', '1');
 require '../vendor/autoload.php';
 
-use App\{Field, Boolean, Text, Radio, Checkbox};
+use App\{Checkbox, Radio, Text};
 
 $fields = [
     new Text('booleanField'),
