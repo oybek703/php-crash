@@ -2,29 +2,12 @@
 
 namespace App;
 
-use App\Exception\MissingBilligInfoException;
-use http\Exception\BadMethodCallException;
-
 class Invoice
 {
-    public function __construct(protected Customer $customer)
+    public int $id;
+    public function __construct(public int $amount)
     {
+        $this->id = random_int(1, 10000);
     }
 
-    /**
-     * @throws \Exception
-     */
-    public function process(int $amount)
-    {
-        if ($amount <= 0):
-            throw new \InvalidArgumentException("Invalid amount: {$amount}");
-        endif;
-        echo $this->customer->getBillingInfo();
-        if (empty($this->customer->getBillingInfo())):
-            throw new MissingBilligInfoException('Missing billing information!');
-        endif;
-        echo "Processing {$amount}$ transaction - ";
-        sleep(1);
-        echo "OK";
-    }
 }

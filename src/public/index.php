@@ -4,12 +4,14 @@ ini_set('display_errors', '1');
 
 require_once '../vendor/autoload.php';
 
-$from = new DateTime();
-$to = $from->add(new DateInterval('P1D'));
+$invoices = new \App\InvoiceCollection([
+    new \App\Invoice(10),
+    new \App\Invoice(20),
+    new \App\Invoice(30),
+    new \App\Invoice(40),
+    new \App\Invoice(50)
+]);
 
-
-$date_format = 'm/d/y';
-
-echo "<pre>";
-    print_r($from->format($date_format) . ' - '  . $to->format($date_format));
-echo "</pre>";
+foreach ($invoices as $invoice):
+    echo $invoice->id . ' - ' . $invoice->amount  . '<br>';
+endforeach;
