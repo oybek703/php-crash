@@ -2,30 +2,29 @@
 
 namespace App;
 
-class Invoice {
-    public function __construct(
-        public string $id,
-        public int $amount,
-        public string $description,
-        public string $cardNumber,
-    )
+use App\Exception\MissingBilligInfoException;
+use http\Exception\BadMethodCallException;
+
+class Invoice
+{
+    public function __construct(protected Customer $customer)
     {
     }
 
-    public function __serialize(): array
+    /**
+     * @throws \Exception
+     */
+    public function process(int $amount)
     {
-        return [
-            'id' => $this->id,
-            'amount' => $this->amount,
-            'description' => $this->description,
-            'cardNumber' => base64_encode($this->cardNumber),
-        ];
-    }
-
-    public function __unserialize(array $data): void
-    {
-        foreach ($data as $key => $value):
-            echo $key  . ' => '. $value . '<br>';
-        endforeach;
+        if ($amount <= 0):
+            throw new \InvalidArgumentException("Invalid amount: {$amount}");
+        endif;
+        echo $this->customer->getBillingInfo();
+        if (empty($this->customer->getBillingInfo())):
+            throw new MissingBilligInfoException('Missing billing information!');
+        endif;
+        echo "Processing {$amount}$ transaction - ";
+        sleep(1);
+        echo "OK";
     }
 }
