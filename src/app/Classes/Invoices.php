@@ -5,7 +5,6 @@ namespace App\Classes;
 class Invoices
 {
     public function index(): void {
-        setcookie(name: 'userName', value: 'John', expires_or_options: time() + 10);
         echo "<h1>Invoices</h1>";
     }
 

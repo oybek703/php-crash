@@ -5,8 +5,19 @@ namespace App\Classes;
 class Home
 {
     public function index(): void {
-        $_SESSION['count'] = ($_SESSION['count'] ?? 0) + 1;
-        var_dump($_SESSION);
-        echo "<h1>Home</h1>";
+        echo <<<FORM
+             <form action="/upload" method="post" enctype="multipart/form-data">
+                <input type="file" name="receipt">
+                <button type="submit">Upload</button>
+             </form>
+             FORM;
+    }
+
+    public function upload() {
+        $filePath = STORAGE_PATH . '/' . $_FILES['receipt']['name'];
+        move_uploaded_file($_FILES['receipt']['tmp_name'], $filePath);
+        echo "<pre>";
+        var_dump($filePath);
+        echo "</pre>";
     }
 }
