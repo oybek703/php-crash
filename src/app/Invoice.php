@@ -2,27 +2,30 @@
 
 namespace App;
 
-/**
- * @property int $amount
- * @property string $description
- */
-class Invoice
-{
-
-    private string $id;
-    /**
-     * @param int $amount
-     * @param string $description
-     */
-    public function __construct(int $amount, string $description)
+class Invoice {
+    public function __construct(
+        public string $id,
+        public int $amount,
+        public string $description,
+        public string $cardNumber,
+    )
     {
-        $this->id= uniqid('invoice_');
-        echo "__construct";
     }
 
-    public function __clone(): void
+    public function __serialize(): array
     {
-        $this->id = uniqid('invoice_');
-        echo "__clone";
+        return [
+            'id' => $this->id,
+            'amount' => $this->amount,
+            'description' => $this->description,
+            'cardNumber' => base64_encode($this->cardNumber),
+        ];
+    }
+
+    public function __unserialize(array $data): void
+    {
+        foreach ($data as $key => $value):
+            echo $key  . ' => '. $value . '<br>';
+        endforeach;
     }
 }
