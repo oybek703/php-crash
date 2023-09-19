@@ -9,6 +9,19 @@ class Invoices
     }
 
     public function create(): void {
-        echo "<h1>Create new invoice...</h1>";
+        echo <<<HTML
+    <form action="/invoices/create" method="post">
+        <label for="amount">
+            Amount: <input name="amount" type="number">
+        </label>
+    </form>
+ HTML;
     }
+
+    public function store() {
+        echo "<pre>";
+            print_r($_POST);
+        echo "</pre>";
+    }
+
 }

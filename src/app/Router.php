@@ -14,19 +14,20 @@ class Router
     {
     }
 
-    public function register(string $route, callable|array $action): self
+
+
+    public function register(string $requestMethod, string $route, callable|array $action): void
     {
-        $this->routes[$route] = $action;
-        return $this;
+        $this->routes[$requestMethod][$route] = $action;
     }
 
     /**
      * @throws RouteNotFoundException
      */
-    public function resolve(string $requestURI)
+    public function resolve(string $requestURI, string $requestMethod)
     {
         $route = explode('?', $requestURI)[0];
-        $action = $this->routes[$route] ?? null;
+        $action = $this->routes[$requestMethod][$route] ?? null;
         if (!$action) {
             throw new RouteNotFoundException();
         }
@@ -44,4 +45,18 @@ class Router
         }
         throw new RouteNotFoundException();
     }
+
+    public function get(string $route, callable|array $action): self
+    {
+        $this->register('get', $route, $action);
+        return $this;
+    }
+
+    public function post(string $route, callable|array $action)
+    {
+        $this->register('post', $route, $action);
+        return $this;
+    }
+
+
 }
