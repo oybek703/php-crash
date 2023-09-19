@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 require_once '../vendor/autoload.php';
 
+session_start();
+
 $router = new App\Router();
 
 $router
@@ -12,3 +14,4 @@ $router
     ->post('/invoices/create', [App\Classes\Invoices::class, 'store']);
 
 echo $router->resolve($_SERVER['REQUEST_URI'], strtolower($_SERVER['REQUEST_METHOD']));
+
