@@ -11,7 +11,9 @@ class View
 
     public function render() {
         ob_start();
-        extract($this->params);
+        foreach ($this->params as $key => $value) {
+            $$key = $value;
+        }
         include VIEWS_PATH . '/' . $this->route . '.php';
         return ob_get_clean();
     }
