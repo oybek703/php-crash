@@ -29,5 +29,12 @@ $router
     [
         'requestURI' =>$_SERVER['REQUEST_URI'],
         'requestMethod' => $_SERVER['REQUEST_METHOD']
+    ],
+    [
+        'dbHost' => $_ENV['DB_HOST'],
+        'dbName' => $_ENV['DB_NAME'],
+        'dbUser' => $_ENV['DB_USER'],
+        'dbPassword' => $_ENV['DB_PASSWORD'],
+        'dbDriver' => $_ENV['DB_DRIVER'] ?? 'mysql'
     ])
 )->run();
