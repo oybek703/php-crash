@@ -2,7 +2,7 @@
 
 ob_start();
 $body = <<<HTML
-<h1>Invoices</h1>
+<h1>InvoiceController</h1>
 HTML;
 include_once '../views/layout.php';
 $layout = ob_get_clean();

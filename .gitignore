@@ -2,7 +2,10 @@
 .idea
 
 # Media files
-uploads/*
+src/storage/*
 
 # Dependencies
 src/vendor
+
+# Env files
+src/.env

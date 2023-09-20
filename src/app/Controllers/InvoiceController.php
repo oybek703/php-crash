@@ -4,10 +4,10 @@ namespace App\Controllers;
 
 use App\View;
 
-class Invoices
+class InvoiceController
 {
     public function index(): View {
-        return View::make('invoices/index', ['title' => 'Invoices']);
+        return View::make('invoices/index', ['title' => 'InvoiceController']);
     }
 
     public function create(): View {

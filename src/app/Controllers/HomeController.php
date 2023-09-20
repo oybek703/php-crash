@@ -8,7 +8,7 @@ use App\View;
 use PDO;
 use PDOException;
 
-class Home
+class HomeController
 {
     public function index(): View
     {
@@ -18,7 +18,7 @@ class Home
                 $_ENV['DB_USER'],
                 $_ENV['DB_PASSWORD']
             );
-            $email = 'sara5@gmail.com';
+            $email = uniqid();
             $fullName = 'Sara Fly';
             $isActive = 1;
             $createdAt = date('Y-m-d H:i:s', (int)strtotime('08.07.2021 12:05PM'));
