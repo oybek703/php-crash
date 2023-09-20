@@ -7,7 +7,6 @@ const STORAGE_PATH = __DIR__ . '/' . '../storage';
 const VIEWS_PATH = __DIR__ . '/' . '../views';
 
 session_start();
-
 try {
     $router = new App\Router();
 
