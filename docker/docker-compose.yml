@@ -20,3 +20,18 @@ services:
     volumes:
       - ../src:/var/www
       - ./nginx:/etc/nginx/conf.d
+
+  db:
+    container_name: php-crash-db
+    image: mysql:8.1.0
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - storage:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+
+volumes:
+  storage:
