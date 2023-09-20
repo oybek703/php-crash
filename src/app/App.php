@@ -13,11 +13,11 @@ App
     public function __construct(
         protected Router $router,
         protected array $request,
-        protected array $config
+        protected Config $config
     )
     {
         try {
-            static::$db = new Db($this->config);
+            static::$db = new Db($config->db ?? []);
         } catch (PDOException $exception) {
             throw new PDOException($exception->getMessage(), (int)$exception->getCode());
         }
@@ -27,7 +27,7 @@ App
         return static::$db;
     }
 
-    public function run()
+    public function run(): void
     {
         try {
             echo $this->router->resolve(

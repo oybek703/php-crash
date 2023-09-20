@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use App\App;
+use App\Models\UserModel;
 use App\View;
 use PDO;
 use PDOException;
@@ -16,22 +17,12 @@ class HomeController
         $db = App::db();
         $email = uniqid();
         $fullName = 'Sara Fly';
-        $isActive = 1;
         $createdAt = date('Y-m-d H:i:s', (int)strtotime('08.07.2021 12:05PM'));
         try {
             $db->beginTransaction();
-            $query = "insert into users(email, full_name, is_active, created_at)
-                      values (:email, :fullName, :isActive, :createdAt)";
-            $statement = $db->prepare($query);
-
-            $statement->bindValue('email', $email);
-            $statement->bindValue('fullName', $fullName);
-            $statement->bindParam('isActive', $isActive, PDO::PARAM_BOOL);
-            $statement->bindValue('createdAt', $createdAt);
-            $statement->execute();
-
-            $id = (int) $db->lastInsertId();
-            $user = $db->query('SELECT * FROM users WHERE id=' . $id)->fetchAll();
+            $userModel = new UserModel();
+            $userId = $userModel->create($email, $fullName, $createdAt);
+            $user = $db->query('SELECT * FROM users WHERE id=' . $userId)->fetchAll();
             echo "<pre>";
             print_r($user);
             echo "</pre>";
