@@ -8,13 +8,22 @@ const VIEWS_PATH = __DIR__ . '/' . '../views';
 
 session_start();
 
-$router = new App\Router();
+try {
+    $router = new App\Router();
 
-$router
-    ->get('/', [App\Controllers\Home::class, 'index'])
-    ->post('/upload', [App\Controllers\Home::class, 'upload'])
-    ->get('/invoices', [App\Controllers\Invoices::class, 'index'])
-    ->get('/invoices/create', [App\Controllers\Invoices::class, 'create'])
-    ->post('/invoices/create', [App\Controllers\Invoices::class, 'store']);
+    $router
+        ->get('/', [App\Controllers\Home::class, 'index'])
+        ->get('/download', [App\Controllers\Home::class, 'download'])
+        ->post('/upload', [App\Controllers\Home::class, 'upload'])
+        ->get('/invoices', [App\Controllers\Invoices::class, 'index'])
+        ->get('/invoices/create', [App\Controllers\Invoices::class, 'create'])
+        ->post('/invoices/create', [App\Controllers\Invoices::class, 'store']);
 
-echo $router->resolve($_SERVER['REQUEST_URI'], strtolower($_SERVER['REQUEST_METHOD']));
+    echo $router->resolve($_SERVER['REQUEST_URI'], strtolower($_SERVER['REQUEST_METHOD']));
+
+} catch (\App\Exceptions\RouteNotFoundException $e) {
+//    header('HTTP/1.1 404 NoT Found');
+    http_response_code(404);
+    $errorMessage =  $e->getMessage();
+    echo \App\View::make('404', ['errorMessage' => $errorMessage]);
+}
