@@ -1,11 +1,17 @@
 <?php
 declare(strict_types=1);
 
+use Dotenv\Dotenv;
+
 require_once '../vendor/autoload.php';
 
+$dotenv = Dotenv::createImmutable(dirname(__DIR__));
+$dotenv->load();
 const STORAGE_PATH = __DIR__ . '/' . '../storage';
 const VIEWS_PATH = __DIR__ . '/' . '../views';
-
+//set_exception_handler(function (Throwable $exception) {
+//    echo $exception->getMessage();
+//});
 session_start();
 try {
     $router = new App\Router();
