@@ -8,7 +8,7 @@ use App\Exceptions\RouteNotFoundException;
 
 class Router
 {
-    private array $routes = [];
+    public array $routes = [];
 
     public function __construct()
     {

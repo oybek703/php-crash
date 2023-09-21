@@ -9,3 +9,6 @@ src/vendor
 
 # Env files
 src/.env
+
+# Cache
+src/.phpunit.result.cache
